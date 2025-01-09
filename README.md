@@ -33,7 +33,7 @@ To manage the OpenWeather API limits, the Remix loader route will need to implem
 ### Dev pre-requisites
 
 - [Git CLI](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- The current LTS version of [Node.js](https://nodejs.org/en) (20.x.x)
+- The current LTS version of [Node.js](https://nodejs.org/en) (22.x.x)
 - [Docker Desktop](https://docs.docker.com/get-docker/) with a free Docker Hub account
 - Code editor, e.g. [VS Code](https://code.visualstudio.com/download)
 - [Kubernetes CLI (kubectl)](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
@@ -49,7 +49,7 @@ To manage the OpenWeather API limits, the Remix loader route will need to implem
 
 Your team lead has created an initial implementation, which is ready for you to test.
 
-- fork the [GitHub repo](https://github.com/rlmckenney/cst8918-w24-a01-weather)
+- fork the [GitHub repo](https://github.com/rlmckenney/cst8918-w25-a01-weather)
 - clone a local copy of your forked repo
 - cd into that local repo
 - run `npm install` to pull-in the various libraries and dev dependencies (e.g. remix, react, etc)
@@ -62,7 +62,7 @@ You can terminate the dev server by typing `CTL-C` in the terminal when you are 
 
 Now that we have a running prototype for the application, it is time to think about how to deploy it. As with most web apps and microservices, our Weather App will be packaged and deployed as a Docker container. This will allow a consistent runtime for local dev testing, continuous integration (CI) testing, and continuous deployment (CD) into one of our cloud IaaS providers (AWS, Azure, GCP).
 
-To make the process of packaging and deploying our containers consistent, repeatable and fast, we need some automation tools. The most common container orchestration tool is [Kubernetes](https://kubernetes.io), and that is what we will use.
+To make the process of packaging and deploying our containers consistent, repeatable and fast, we need some automation tools. The most common container orchestration tool is [Kubernetes (see official docs)](https://kubernetes.io), and that is what we will use.
 
 ### Create a container image
 
@@ -234,10 +234,17 @@ kubectl delete namespace cst8918
 
 ## Demo
 
-For grading this lab activity please show the following to your lab teacher:
+For grading this lab activity please submit a single ZIP file called `cst8918-w25-a01-weather.zip` that contains the following files:
+
+Try to fit all four items into a single screen shot.
+
+Screenshot:
 
 - Browser with the app running at `http://localhost`
-- all files in the `k8s` folder
 - `kubectl get namespaces`
 - `kubectl get services -n cst8918`
 - `kubectl get pods -n cst8918`
+
+Files:
+
+- all files in the `k8s` folder
