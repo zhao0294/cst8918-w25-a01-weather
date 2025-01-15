@@ -40,10 +40,17 @@ To manage the OpenWeather API limits, the Remix loader route will need to implem
 
 ### TODO
 
-- sign-up for a free account at [OpenWeather API](https://openweathermap.org)
-- subscribe to the _One Call API 3.0_ option
-- create a new API key
+- sign-up for a free account at [OpenWeather API](https://home.openweathermap.org/users/sign_up)
+- this should send you an email with a new API key (it may take up to two hours before it is active)
 - set a local environment variable in your terminal called `WEATHER_API_KEY` with the value of your API key. It will be needed later.
+
+```sh
+# linux/mac
+export WEATHER_API_KEY=<your-api-key>
+
+# windows
+set WEATHER_API_KEY=<your-api-key>
+```
 
 ### Test the application
 
@@ -83,7 +90,7 @@ In the terminal, at the top level of your project, run the `docker build --tag=c
 Quickly deploy an instance of the container using Docker desktop.
 
 ```sh
-docker run -d --name weather -p 8080:8080 --env WEATHER_API_KEY=<your-api-key> cst8918-01-weather-app
+docker run -d --name weather -p 8080:8080 --env WEATHER_API_KEY=<your-api-key> cst8918-a01-weather-app
 ```
 
 Then open `http://localhost:8080` in a browser to make sure that the container is working as expected.
@@ -130,7 +137,7 @@ metadata:
   name: cst8918
 ```
 
-Activate that namespace with the `kubectl apply ./k8s/a01_namespace.yaml` command in the terminal.
+Activate that namespace with the `kubectl apply -f ./k8s/a01_namespace.yaml` command in the terminal.
 
 #### Deployment
 
@@ -192,7 +199,7 @@ Run `kubectl create secret generic weather --from-literal='api-key=<your-secret-
       key: api-key
 ```
 
-Activate the deployment with `kubectl apply ./k8s/a01_deployment.yaml -n cst8918`. The `-n` flag tells Kubernetes to use the namespace that we defined earlier.
+Activate the deployment with `kubectl apply -f ./k8s/a01_deployment.yaml -n cst8918`. The `-n` flag tells Kubernetes to use the namespace that we defined earlier.
 
 #### Service
 
@@ -218,7 +225,7 @@ spec:
   type: LoadBalancer
 ```
 
-Activate the service with `kubectl apply ./k8s/a01_service.yaml -n cst8918`. Now test it by opening `http:localhost` in a browser.
+Activate the service with `kubectl apply -f ./k8s/a01_service.yaml -n cst8918`. Now test it by opening `http:localhost` in a browser.
 
 #### Clean-up
 
